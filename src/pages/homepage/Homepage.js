@@ -1,12 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import './homepage.scss';
 import { ReactComponent as Logo } from '../../assets/ANIMEFLIX.svg';
-import { auth } from '../../firebase';
 import { connect } from 'react-redux';
-import { signedOut } from '../../redux/actions';
 import loaderAnimation from '../../animations/loader';
+import Nav from '../../components/nav/Nav';
 
-const Homepage = ({ firstLoad, signedOut }) => {
+const Homepage = ({ firstLoad }) => {
   const homepageRef = useRef(null);
   const logoRef = useRef(null);
   const loaderRef = useRef(null);
@@ -24,14 +23,8 @@ const Homepage = ({ firstLoad, signedOut }) => {
           </div>
         </div>
       )}
-      <button
-        onClick={() => {
-          auth.signOut();
-          signedOut();
-        }}
-      >
-        Sign Out
-      </button>
+      <Nav />
+      
     </div>
   );
 };
@@ -40,8 +33,5 @@ const mapStateToProps = ({ firstLoad }) => ({
   firstLoad,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  signedOut: () => dispatch(signedOut()),
-});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+export default connect(mapStateToProps)(Homepage);

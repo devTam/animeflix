@@ -16,12 +16,12 @@
     flex-direction: column;
     color: var(--red);
     letter-spacing: 5px;
-    font-size: 40px;
+    font-size: 3rem;
 }
 
 .login__subheading {
     letter-spacing: 0;
-    font-size: 14px;
+    font-size: .9rem;
     align-self: flex-end;
     color: var(--black);
     margin-right: 4px;
@@ -55,4 +55,19 @@
     width: 20px;
     height: 20px;
     margin-right: 8px;
+}
+
+@media screen and (max-width: 576px) {
+    .login__heading {
+        font-size: 2rem;
+    }
+
+    .login__subheading {
+        font-size: .7rem;
+    }
+
+    .login__btn {
+        font-size: .7rem;
+        padding: 6px 10px;
+    }
 }

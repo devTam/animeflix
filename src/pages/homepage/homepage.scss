@@ -1,11 +1,6 @@
 .homepage {
-    min-height: 100vh;
-    width: 100%;
-    display: grid;
-    place-items: center;
     visibility: hidden;
-
-    
+    background: var(--bg);
 }
 
 .loader {
@@ -18,6 +13,7 @@
     background-color: var(--bg);
     display: grid;
     place-items: center;
+    z-index: 3;
 
     &__logo-container {
         overflow: hidden;
@@ -28,5 +24,9 @@
         width: 50vw;
         max-width: 350px;
     }
+}
+
+p {
+    background-color: #fff;
 }
 

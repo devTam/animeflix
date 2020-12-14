@@ -1,0 +1,90 @@
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px;
+  height: 50px;
+  z-index: 1;
+  transition: all 0.5s ease-out;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    rgba(0, 0, 0, 0)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media screen and (min-width: 950px) {
+    height: 68px;
+  }
+}
+
+.nav-black {
+  background-color: var(--bg);
+}
+
+.nav__logo {
+  margin-left: 40px;
+  width: 130px;
+  object-fit: contain;
+  fill: var(--red);
+  cursor: pointer;
+
+  @media screen and (max-width: 576px) {
+    width: 90px;
+    margin-left: 10px;
+  }
+}
+
+.nav__avatar {
+  margin-right: 40px;
+  width: 45px;
+  padding: 2px;
+  object-fit: contain;
+  border-radius: 4px;
+  cursor: pointer;
+
+  @media screen and (max-width: 576px) {
+    margin-right: 10px;
+    width: 30px;
+  }
+}
+
+.nav__dropdown {
+  position: fixed;
+  z-index: 2;
+  top: 59px;
+  right: 60px;
+  width: 180px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.9);
+  display: grid;
+  place-items: center;
+
+  @media screen and (min-width: 950px) {
+    top: 77px;
+  }
+
+  @media screen and (max-width: 576px) {
+    right: 30px;
+    top: 50px
+  }
+}
+
+.signout {
+  background: transparent;
+  font-size: .8rem;
+  font-family: inherit;
+  font-weight: 800;
+  color: var(--white);
+  border: none;
+  outline-width: 0;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+}
+
