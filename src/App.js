@@ -10,8 +10,10 @@ import { signedIn } from './redux/actions';
 function App({signedInUser, user}) {
     useEffect(() => {
       auth.onAuthStateChanged(user => {
-        const { photoURL } = user;
-        signedInUser(photoURL)
+        if(user) {
+          const { photoURL } = user;
+          signedInUser(photoURL)
+        }
       })
     }, [signedInUser])
 

@@ -1,0 +1,32 @@
+.homepage {
+    min-height: 100vh;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    visibility: hidden;
+
+    
+}
+
+.loader {
+    opacity: 1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    min-height: 100vh;
+    width: 100%;
+    background-color: var(--bg);
+    display: grid;
+    place-items: center;
+
+    &__logo-container {
+        overflow: hidden;
+
+    }
+
+    &__logo {
+        width: 50vw;
+        max-width: 350px;
+    }
+}
+

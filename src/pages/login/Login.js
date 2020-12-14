@@ -1,13 +1,20 @@
 import React from 'react';
 import './login.scss';
 import { ReactComponent as Google } from '../../assets/google.svg';
-import { signInWithGoogle } from '../../firebase'
+import { auth, provider } from '../../firebase';
+import audio from '../../assets/netflix-sound.mp3';
 
 const Login = () => {
+  let sound = new Audio(audio);
 
   const signIn = () => {
-    signInWithGoogle();
-  }
+    auth.signInWithPopup(provider).then(() => 
+    {
+      console.log("loggin in")
+      sound.play()
+    })
+
+  };
 
   return (
     <div className="login">
@@ -22,5 +29,6 @@ const Login = () => {
     </div>
   );
 };
+
 
 export default Login;
