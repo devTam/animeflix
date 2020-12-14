@@ -1,21 +1,36 @@
-import { SIGNED_IN } from './types'
+import { SIGNED_IN, SIGNED_OUT } from './types';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
 
+const persistConfig = {
+  key: 'root',
+  storage,
+}
 
 const INITIAL_STATE = {
-    user: null
-}
+  user: null,
+  firstLoad: true,
+};
 
-const reducer = (state=INITIAL_STATE, action) => {
-    switch (action.type) {
-        case SIGNED_IN:
-            return {
-                ...state,
-                user: action.payload
-            }
-    
-        default:
-            return state
-    }
-}
+const animeReducer = (state = INITIAL_STATE, action) => {
+  switch (action.type) {
+    case SIGNED_IN:
+      return {
+        ...state,
+        user: action.payload,
+        firstLoad: true
+      }
 
-export default reducer
+    case SIGNED_OUT:
+      return {
+        ...state,
+        user: null,
+        firstLoad: false
+      };
+
+    default:
+      return state;
+  }
+};
+
+export default persistReducer(persistConfig, animeReducer);

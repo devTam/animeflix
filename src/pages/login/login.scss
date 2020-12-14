@@ -7,7 +7,7 @@
     justify-content: center;
     min-height: 100vh;
     width: 100%;
-    background-color: var(--bg);
+    background-color: var(--white);
 }
 
 .login__heading {
@@ -23,7 +23,7 @@
     letter-spacing: 0;
     font-size: 14px;
     align-self: flex-end;
-    color: var(--white);
+    color: var(--black);
     margin-right: 4px;
     font-weight: 600;
     font-family: "Roboto", sans-serif;
@@ -36,7 +36,7 @@
     align-items: center;
     font-family: "Roboto", sans-serif;
     padding: 8px 15px;
-    color: var(--white);
+    color: #444;
     border: thin solid #888;
     border-radius: 5px;
     cursor: pointer;
@@ -47,7 +47,7 @@
     outline-width: 0;
 
     &:hover {
-        color: var(--googleblue);
+        color: var(--black);
     }
 }
 

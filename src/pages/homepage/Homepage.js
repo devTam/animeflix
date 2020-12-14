@@ -1,51 +1,47 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import './homepage.scss';
 import { ReactComponent as Logo } from '../../assets/ANIMEFLIX.svg';
-import gsap from 'gsap';
 import { auth } from '../../firebase';
+import { connect } from 'react-redux';
+import { signedOut } from '../../redux/actions';
+import loaderAnimation from '../../animations/loader';
 
-const Homepage = () => {
-  const [firstLoad, setFirstLoad] = useState(true);
+const Homepage = ({ firstLoad, signedOut }) => {
+  const homepageRef = useRef(null);
+  const logoRef = useRef(null);
+  const loaderRef = useRef(null);
 
   useEffect(() => {
-    const tl = gsap.timeline();
-    tl.to('.homepage', {
-      duration: 0,
-      visibility: 'visible',
-    })
-      .to('.loader__logo', {
-        duration: 0,
-        fill: '#E50914',
-      })
-      .from('.loader__logo', {
-        duration: 1,
-        y: 100,
-        skewY: 20,
-      })
-      .to(".loader", {
-        duration: 1,
-        ease: "power3.in",
-        delay: .5,
-        opacity: 0, 
-      })
-      .to(".loader", {
-          display: "none"
-      })
-  }, []);
+    loaderAnimation(homepageRef, loaderRef, logoRef, firstLoad)
+  }, [firstLoad]);
 
   return (
-    <div className="homepage">
+    <div className="homepage" ref={homepageRef}>
       {firstLoad && (
-          <div className="loader">
-        <div className="loader__logo-container">
-          <Logo className="loader__logo" />
-        </div>
-
+        <div className="loader" ref={loaderRef}>
+          <div className="loader__logo-container">
+            <Logo className="loader__logo" ref={logoRef} />
           </div>
+        </div>
       )}
-      <button onClick={() => auth.signOut()}>Sign Out</button>
+      <button
+        onClick={() => {
+          auth.signOut();
+          signedOut();
+        }}
+      >
+        Sign Out
+      </button>
     </div>
   );
 };
 
-export default Homepage;
+const mapStateToProps = ({ firstLoad }) => ({
+  firstLoad,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  signedOut: () => dispatch(signedOut()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
