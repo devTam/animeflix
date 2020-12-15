@@ -4,6 +4,7 @@ import { ReactComponent as Logo } from '../../assets/ANIMEFLIX.svg';
 import { connect } from 'react-redux';
 import loaderAnimation from '../../animations/loader';
 import Nav from '../../components/nav/Nav';
+import Jumbotron from '../../components/jumbotron/Jumbotron';
 
 const Homepage = ({ firstLoad }) => {
   const homepageRef = useRef(null);
@@ -24,6 +25,7 @@ const Homepage = ({ firstLoad }) => {
         </div>
       )}
       <Nav />
+      <Jumbotron />
       
     </div>
   );

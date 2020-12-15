@@ -1,4 +1,4 @@
-import { SIGNED_IN, SIGNED_OUT } from './types';
+import { HIDE_ANIMATION, SIGNED_IN, SIGNED_OUT } from './types';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
 
@@ -25,6 +25,12 @@ const animeReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         user: null,
+        firstLoad: false
+      };
+
+    case HIDE_ANIMATION:
+      return {
+        ...state,
         firstLoad: false
       };
 

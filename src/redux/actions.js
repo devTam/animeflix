@@ -1,4 +1,4 @@
-import { SIGNED_IN, SIGNED_OUT } from "./types";
+import { HIDE_ANIMATION, SIGNED_IN, SIGNED_OUT } from "./types";
 
 
 export const signedIn = (user) => ({
@@ -8,4 +8,8 @@ export const signedIn = (user) => ({
 
 export const signedOut = () => ({
     type: SIGNED_OUT
+})
+
+export const hideAnimation = () => ({
+    type: HIDE_ANIMATION
 })
