@@ -4,7 +4,7 @@
   color: white;
   margin-bottom: 3vw;
   margin-left: 60px;
-  //   border: 5px solid green;
+  
 
   @media screen and (max-width: 576px) {
     margin-left: 30px;
@@ -25,11 +25,11 @@
 }
 
 .row__posters {
-  // display: flex;
-  // overflow-y: hidden;
-  // overflow-x: auto;
-  // padding-left: 0;
   padding-top: 5px;
+}
+
+.carousel {
+  position: relative;
 }
 
 .row__posters::-webkit-scrollbar {
@@ -44,8 +44,7 @@
   cursor: pointer;
 
   @media screen and (max-width: 576px) {
-    // min-width: 120px;
-    // height: 180px;
+    height: 25vh;
   }
 
   &:hover .row__poster {
@@ -86,4 +85,50 @@
   backface-visibility: hidden;
   transform: translateZ(0);
   transition: opacity ease-out 450ms;
+
+  @media screen and (max-width: 380px) {
+    font-size: .7rem;
+  }
+}
+
+
+.slider-btn {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  border: none;
+  outline-width: 0;
+  background-color: transparent;
+  backdrop-filter: invert(60%);
+  transition: background-color .25s ease-in-out;
+  opacity: 0;
+  transition: all .25s;
+
+  &.show-btn {
+    opacity: 1;
+  }
+
+  @media screen and (max-width: 576px) {
+    display: none;
+  }
+
+  
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+  }
+  
+  & i {
+    font-size: 2rem;
+  }
+
+  &--prev {
+    left: 0;
+  }
+
+  &--next {
+    right: 0;
+
+  }
 }
