@@ -4,7 +4,6 @@
   color: white;
   margin-bottom: 3vw;
   margin-left: 60px;
-  
 
   @media screen and (max-width: 576px) {
     margin-left: 30px;
@@ -87,10 +86,9 @@
   transition: opacity ease-out 450ms;
 
   @media screen and (max-width: 380px) {
-    font-size: .7rem;
+    font-size: 0.7rem;
   }
 }
-
 
 .slider-btn {
   display: inline-block;
@@ -99,11 +97,15 @@
   height: 100%;
   border: none;
   outline-width: 0;
-  background-color: transparent;
-  backdrop-filter: invert(60%);
-  transition: background-color .25s ease-in-out;
+  // background-color: transparent;
+  // backdrop-filter: invert(60%);
+  background-color: rgba(20, 20, 20, 0.5);
+  color: #fff;
   opacity: 0;
-  transition: all .25s;
+  transition: all 0.25s;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  overflow: hidden;
 
   &.show-btn {
     opacity: 1;
@@ -113,22 +115,30 @@
     display: none;
   }
 
-  
-
   &:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(20, 20, 20, 0.7);
   }
-  
+
+  &:hover i {
+    // background-color: rgba(255, 255, 255, 0.5);
+    transform: scale(1.5);
+  }
+
   & i {
-    font-size: 2rem;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    transition: transform 0.25s ease-out;
+    font-size: 2.5vw;
+    padding: 10px;
   }
 
   &--prev {
     left: 0;
+    padding-left: 0;
   }
 
   &--next {
     right: 0;
-
+    padding-right: 0;
   }
 }
