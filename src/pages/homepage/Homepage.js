@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import loaderAnimation from '../../animations/loader';
 import Nav from '../../components/nav/Nav';
 import Jumbotron from '../../components/jumbotron/Jumbotron';
+import Row from '../../components/row/Row';
 
 const Homepage = ({ firstLoad }) => {
   const homepageRef = useRef(null);
@@ -26,6 +27,10 @@ const Homepage = ({ firstLoad }) => {
       )}
       <Nav />
       <Jumbotron />
+      <Row title="Favorites" url="favorites"/>
+      <Row title="Action" url="action"/>
+      <Row title="Adventure" url="adventure"/>
+      <Row title="Comedy" url="comedy"/>
       
     </div>
   );

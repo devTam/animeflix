@@ -35,6 +35,12 @@
     width: 90px;
     margin-left: 10px;
   }
+
+  @media screen and (max-width: 380px) {
+    margin-left: 0px;
+  }
+
+
 }
 
 .nav__avatar {
@@ -48,6 +54,10 @@
   @media screen and (max-width: 576px) {
     margin-right: 10px;
     width: 30px;
+  }
+
+  @media screen and (max-width: 380px) {
+    margin-right: 0px;
   }
 }
 
