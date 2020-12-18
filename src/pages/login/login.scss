@@ -1,73 +1,75 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    width: 100%;
-    background-color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--white);
 }
 
 .login__heading {
-    margin-bottom: 30px;
-    display: flex;
-    flex-direction: column;
-    color: var(--red);
-    letter-spacing: 5px;
-    font-size: 3rem;
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  color: var(--red);
+  letter-spacing: 5px;
+  font-size: 3rem;
 }
 
 .login__subheading {
-    letter-spacing: 0;
-    font-size: .9rem;
-    align-self: flex-end;
-    color: var(--black);
-    margin-right: 4px;
-    font-weight: 600;
-    font-family: "Roboto", sans-serif;
-    letter-spacing: 1px;
+  letter-spacing: 0;
+  font-size: 0.9rem;
+  align-self: flex-end;
+  color: var(--black);
+  margin-right: 4px;
+  font-weight: 600;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
 }
 
 .login__btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Roboto", sans-serif;
-    padding: 8px 15px;
-    color: #444;
-    border: thin solid #888;
-    border-radius: 5px;
-    cursor: pointer;
-    background: inherit;
-    white-space: nowrap;
-    font-weight: bold;
-    transition: color .4s;
-    outline-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto', sans-serif;
+  padding: 8px 15px;
+  color: #444;
+  border: thin solid #888;
+  border-radius: 5px;
+  cursor: pointer;
+  background: inherit;
+  white-space: nowrap;
+  font-weight: bold;
+  transition: color 0.4s;
+  outline-width: 0;
 
+  @media (hover: hover) {
     &:hover {
-        color: var(--black);
+      color: var(--black);
     }
+  }
 }
 
 .login__svg {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
 }
 
 @media screen and (max-width: 576px) {
-    .login__heading {
-        font-size: 2rem;
-    }
+  .login__heading {
+    font-size: 2rem;
+  }
 
-    .login__subheading {
-        font-size: .7rem;
-    }
+  .login__subheading {
+    font-size: 0.7rem;
+  }
 
-    .login__btn {
-        font-size: .7rem;
-        padding: 6px 10px;
-    }
+  .login__btn {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
 }
