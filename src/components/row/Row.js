@@ -8,6 +8,7 @@ import {
   Slide,
   ButtonBack,
   ButtonNext,
+  DotGroup
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
@@ -140,6 +141,10 @@ const Row = ({ title, url }) => {
           <ButtonNext className={`slider-btn slider-btn--next ${showBtn && "show-btn"}`}>
             <i className="fas fa-chevron-right"></i>
           </ButtonNext>
+          {
+              showBtn &&
+          <DotGroup showAsSelectedForCurrentSlideOnly={true} className="indicator"/>
+          }
         </CarouselProvider>
       </div>
       {trailer && (

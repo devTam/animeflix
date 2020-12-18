@@ -6,16 +6,19 @@ import App from './App';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-        <Router>
-      <PersistGate persistor={persistor}>
+      <Router>
+        <PersistGate persistor={persistor}>
           <App />
-      </PersistGate>
-        </Router>
+        </PersistGate>
+      </Router>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+serviceWorker.register();
