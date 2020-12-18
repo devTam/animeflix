@@ -8,7 +8,7 @@ import {
   Slide,
   ButtonBack,
   ButtonNext,
-  DotGroup
+  DotGroup,
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
@@ -19,17 +19,17 @@ const Row = ({ title, url }) => {
   const [slideCount, setSlideCount] = useState(7);
   const [showBtn, setShowBtn] = useState(false);
   const isFirstRender = useRef(true);
-//   const rowpostersRef = useRef();
+  //   const rowpostersRef = useRef();
 
   const handleClick = (movie) => {
     setTrailer(movie.youtube);
   };
-//   useEffect(() => {
-//       console.log(rowpostersRef.current)
-    
-//   }, []);
+  //   useEffect(() => {
+  //       console.log(rowpostersRef.current)
 
-//   FETCHING DATA FROM DB
+  //   }, []);
+
+  //   FETCHING DATA FROM DB
   useEffect(() => {
     db.collection('anime')
       .doc('oA4ytS11nTZdBwWdGYrj')
@@ -48,66 +48,100 @@ const Row = ({ title, url }) => {
     isFirstRender.current = false;
   }, []);
 
-//   MEDIA QUERIES FOR CAROUSEL RESIZE
+  //   const checkMediaQuery = () => {
 
-  const desktop = window.matchMedia('(max-width: 1200px)');
-  const smallDesktop = window.matchMedia('(max-width: 992px)');
-  const tablet = window.matchMedia('(max-width: 768px)');
-  const phone = window.matchMedia('(max-width: 576px)');
-  const smallPhone = window.matchMedia('(max-width: 380px)');
+  //   }
 
-//   FUNCTIONS FOR RESIZING CAROUSEL ITEMS
-  const resizeDesktop = (e) => {
-    if (e.matches) {
-      setSlideCount(6);
-    }
-  };
-  const resizeSmallDesktop = (e) => {
-    if (e.matches) {
-      setSlideCount(5);
-    }
-  };
-  const resizeTablet = (e) => {
-    if (e.matches) {
-      setSlideCount(4);
-    }
-  };
-  const resizePhone = (e) => {
-    if (e.matches) {
-      setSlideCount(3);
-    }
-  };
-  const resizeSmallPhone = (e) => {
-    if (e.matches) {
-      setSlideCount(2);
-    }
-  };
-
-//   EFFECT HOOK FOR EVENT LISTENERS ON CAROUSEL MEDIA QUERIES
   useEffect(() => {
-    desktop.addEventListener('change', resizeDesktop);
+      setSlideCount(7);
+    window.addEventListener('resize', () => {
+      if (window.innerWidth <= 1200) {
+        setSlideCount(6);
+        console.log(2)
+      } else return;
+      if (window.innerWidth <= 992) {
+        setSlideCount(5);
+        console.log(3)
+      } else return;
+      if (window.innerWidth <= 768) {
+        setSlideCount(4);
+        console.log(4)
+      } else return;
+      if (window.innerWidth <= 578) {
+        setSlideCount(3);
+        console.log(5)
+      } else return;
+      if (window.innerWidth <= 380) {
+        setSlideCount(2);
+        console.log(6)
+      } else return;
+    });
+  }, []);
 
-    smallDesktop.addEventListener('change', resizeSmallDesktop);
+  //   MEDIA QUERIES FOR CAROUSEL RESIZE
 
-    tablet.addEventListener('change', resizeTablet);
+  //   const desktop = window.matchMedia('(max-width: 1200px)');
+  //   const smallDesktop = window.matchMedia('(max-width: 992px)');
+  //   const tablet = window.matchMedia('(max-width: 768px)');
+  //   const phone = window.matchMedia('(max-width: 576px)');
+  //   const smallPhone = window.matchMedia('(max-width: 380px)');
 
-    phone.addEventListener('change', resizePhone);
+  //   FUNCTIONS FOR RESIZING CAROUSEL ITEMS
+  //   const resizeDesktop = (e) => {
+  //     if (e.matches) {
+  //       setSlideCount(6);
+  //     }
+  //   };
+  //   const resizeSmallDesktop = (e) => {
+  //     if (e.matches) {
+  //       setSlideCount(5);
+  //     }
+  //   };
+  //   const resizeTablet = (e) => {
+  //     if (e.matches) {
+  //       setSlideCount(4);
+  //     }
+  //   };
+  //   const resizePhone = (e) => {
+  //     if (e.matches) {
+  //       setSlideCount(3);
+  //     }
+  //   };
+  //   const resizeSmallPhone = (e) => {
+  //     if (e.matches) {
+  //       setSlideCount(2);
+  //     }
+  //   };
 
-    smallPhone.addEventListener('change', resizeSmallPhone);
+  //   EFFECT HOOK FOR EVENT LISTENERS ON CAROUSEL MEDIA QUERIES
+  //   useEffect(() => {
+  //     desktop.addEventListener('resize', resizeDesktop);
 
-    return () => {
-      desktop.removeEventListener('change', resizeDesktop);
-      smallDesktop.removeEventListener('change', resizeSmallDesktop);
-      tablet.removeEventListener('change', resizeTablet);
-      phone.removeEventListener('change', resizePhone);
-      smallPhone.removeEventListener('change', resizeSmallPhone);
-    };
-  }, [desktop, smallDesktop, tablet, phone, smallPhone]);
+  //     smallDesktop.addEventListener('resize', resizeSmallDesktop);
+
+  //     tablet.addEventListener('resize', resizeTablet);
+
+  //     phone.addEventListener('resize', resizePhone);
+
+  //     smallPhone.addEventListener('resize', resizeSmallPhone);
+
+  //     return () => {
+  //       desktop.removeEventListener('resize', resizeDesktop);
+  //       smallDesktop.removeEventListener('resize', resizeSmallDesktop);
+  //       tablet.removeEventListener('resize', resizeTablet);
+  //       phone.removeEventListener('resize', resizePhone);
+  //       smallPhone.removeEventListener('resize', resizeSmallPhone);
+  //     };
+  //   }, [desktop, smallDesktop, tablet, phone, smallPhone]);
 
   return (
     <main className="row">
       <h2 className="row__name">{title}</h2>
-      <div className="row__posters" onMouseEnter={() => setShowBtn(true)} onMouseLeave={() => setShowBtn(false)}>
+      <div
+        className="row__posters"
+        onMouseEnter={() => setShowBtn(true)}
+        onMouseLeave={() => setShowBtn(false)}
+      >
         <CarouselProvider
           naturalSlideWidth={160}
           naturalSlideHeight={220}
@@ -135,16 +169,22 @@ const Row = ({ title, url }) => {
               );
             })}
           </Slider>
-          <ButtonBack className={`slider-btn slider-btn--prev ${showBtn && "show-btn"}`}>
+          <ButtonBack
+            className={`slider-btn slider-btn--prev ${showBtn && 'show-btn'}`}
+          >
             <i className="fas fa-chevron-left"></i>
           </ButtonBack>
-          <ButtonNext className={`slider-btn slider-btn--next ${showBtn && "show-btn"}`}>
+          <ButtonNext
+            className={`slider-btn slider-btn--next ${showBtn && 'show-btn'}`}
+          >
             <i className="fas fa-chevron-right"></i>
           </ButtonNext>
-          {
-              showBtn &&
-          <DotGroup showAsSelectedForCurrentSlideOnly={true} className="indicator"/>
-          }
+          {showBtn && (
+            <DotGroup
+              showAsSelectedForCurrentSlideOnly={true}
+              className="indicator"
+            />
+          )}
         </CarouselProvider>
       </div>
       {trailer && (
