@@ -7,7 +7,6 @@ const mediaQuery = (setSlideCount, setShowBtn) => {
   } else return;
   if (window.innerWidth <= 768) {
     setSlideCount(4);
-    console.log(768);
   } else return;
   if (window.innerWidth <= 578) {
     setSlideCount(3);

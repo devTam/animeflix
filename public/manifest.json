@@ -8,8 +8,8 @@
         "type": "image/x-icon"
       },
       {
-        "src": "safari-pinned-tab",
-        "sizes": "196x196",
+        "src": "favicon.ico",
+        "sizes": "48x48",
         "type": "image/x-icon",
         "purpose": "any maskable"
       },

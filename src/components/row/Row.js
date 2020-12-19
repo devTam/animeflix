@@ -21,10 +21,6 @@ const Row = ({ title, url }) => {
   const [showBtn, setShowBtn] = useState(false);
   const isFirstRender = useRef(true);
 
-  const handleClick = (movie) => {
-    setTrailer(movie.youtube);
-  };
-
   //   FETCHING DATA FROM DB
   useEffect(() => {
     db.collection('anime')
@@ -34,6 +30,7 @@ const Row = ({ title, url }) => {
       });
   }, [url]);
 
+  //   MIMICK COMPONENTDIDUPDATE WITHOUT COMPONENTDIDMOUNT FIRING IN USEEFFECT
   useEffect(() => {
     if (!isFirstRender.current) {
       setOpen(true);
@@ -44,6 +41,7 @@ const Row = ({ title, url }) => {
     isFirstRender.current = false;
   }, []);
 
+  //   UPDATE NUMBER OF ITEMS DISPLAYED BY SLIDER ON WINDOW RESIZE
   useEffect(() => {
     setSlideCount(7);
     window.addEventListener('resize', mediaQuery(setSlideCount, setShowBtn));
@@ -76,7 +74,7 @@ const Row = ({ title, url }) => {
                 <Slide index={i} key={movie.id}>
                   <div
                     className="row__poster-container"
-                    onClick={() => handleClick(movie)}
+                    onClick={() => setTrailer(movie?.youtube)}
                   >
                     <img
                       className="row__poster"

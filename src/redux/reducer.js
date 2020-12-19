@@ -1,11 +1,4 @@
-import { HIDE_ANIMATION, SIGNED_IN, SIGNED_OUT } from './types';
-import { persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'
-
-const persistConfig = {
-  key: 'root',
-  storage,
-}
+import { SIGNED_IN, SIGNED_OUT } from './types';
 
 const INITIAL_STATE = {
   user: null,
@@ -18,14 +11,14 @@ const animeReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         user: action.payload,
-        firstLoad: true
-      }
+        firstLoad: true,
+      };
 
     case SIGNED_OUT:
       return {
         ...state,
         user: null,
-        firstLoad: false
+        firstLoad: false,
       };
 
     default:
@@ -33,4 +26,4 @@ const animeReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default persistReducer(persistConfig, animeReducer);
+export default animeReducer;

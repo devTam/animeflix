@@ -6,6 +6,7 @@ import loaderAnimation from '../../animations/loader';
 import Nav from '../../components/nav/Nav';
 import Jumbotron from '../../components/jumbotron/Jumbotron';
 import Loader from '../../components/loader/Loader';
+import ErrorBoundary from '../../components/error-boundary/ErrorBoundary';
 const Row = lazy(() => import('../../components/row/Row'));
 
 const Homepage = ({ firstLoad }) => {
@@ -28,12 +29,14 @@ const Homepage = ({ firstLoad }) => {
       )}
       <Nav />
       <Jumbotron />
-      <Suspense fallback={<Loader />}>
-        <Row title="Favorites" url="favorites" />
-        <Row title="Action" url="action" />
-        <Row title="Adventure" url="adventure" />
-        <Row title="Comedy" url="comedy" />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<Loader />}>
+          <Row title="Favorites" url="favorites" />
+          <Row title="Action" url="action" />
+          <Row title="Adventure" url="adventure" />
+          <Row title="Comedy" url="comedy" />
+        </Suspense>
+      </ErrorBoundary>
     </div>
   );
 };

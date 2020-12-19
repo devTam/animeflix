@@ -1,25 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { db } from '../../firebase';
+
 import './jumbotron.scss';
 import ModalVideo from 'react-modal-video';
 
 import truncate from '../../utility/truncate';
+import fetchBanner from '../../utility/fetchBanner';
 
 const Jumbotron = () => {
   const [anime, setAnime] = useState([]);
   const [isOpen, setOpen] = useState(false);
 
+
+
   useEffect(() => {
     // Fetch data from db
-    db.collection('anime')
-      .doc('oA4ytS11nTZdBwWdGYrj')
-      .onSnapshot((snapshot) => {
-        setAnime(
-          snapshot.data()?.banner[
-            Math.floor(Math.random() * snapshot.data().banner.length)
-          ]
-        );
-      });
+    fetchBanner(setAnime);
+
+    return () => fetchBanner(setAnime);
   }, []);
 
   return (
@@ -53,7 +50,7 @@ const Jumbotron = () => {
         </div>
       </div>
       <div className="jumbotron--fadeBottom"></div>
-      {anime.youtube && (
+      {anime?.youtube && (
         <ModalVideo
           channel="youtube"
           autoplay
