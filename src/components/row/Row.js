@@ -77,7 +77,9 @@ const Row = ({ title, url }) => {
                     className="row__poster-container"
                     onClick={() => setTrailer(movie?.youtube)}
                   >
-                    <ProgressiveImage
+                    {
+                      movie?.photo &&
+                    (<ProgressiveImage
                       src={movie.photo}
                       placeholder="../../assets/placeholder-min.png"
                     >
@@ -89,7 +91,8 @@ const Row = ({ title, url }) => {
                           alt={movie.name}
                         />
                       )}
-                    </ProgressiveImage>
+                    </ProgressiveImage>)
+                    }
 
                     <div className="row__poster-name">{movie.name}</div>
                   </div>
