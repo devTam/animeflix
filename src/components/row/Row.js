@@ -12,6 +12,7 @@ import {
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import mediaQuery from '../../utility/mediaQuery';
+import ProgressiveImage from 'react-progressive-image';
 
 const Row = ({ title, url }) => {
   const [movies, setMovies] = useState([]);
@@ -76,11 +77,19 @@ const Row = ({ title, url }) => {
                     className="row__poster-container"
                     onClick={() => setTrailer(movie?.youtube)}
                   >
-                    <img
-                      className="row__poster"
-                      alt={movie.name}
+                    <ProgressiveImage
                       src={movie.photo}
-                    />
+                      placeholder="../../assets/placeholder-min.png"
+                    >
+                      {src => (
+                        <img
+                          src={src}
+                          className="row__poster"
+                          alt={movie.name}
+                        />
+                      )}
+                    </ProgressiveImage>
+
                     <div className="row__poster-name">{movie.name}</div>
                   </div>
                 </Slide>
