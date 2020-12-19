@@ -28,12 +28,6 @@ const animeReducer = (state = INITIAL_STATE, action) => {
         firstLoad: false
       };
 
-    case HIDE_ANIMATION:
-      return {
-        ...state,
-        firstLoad: false
-      };
-
     default:
       return state;
   }

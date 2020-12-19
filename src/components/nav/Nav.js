@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { ReactComponent as Logo } from '../../assets/ANIMEFLIX.svg';
-import { withRouter } from "react-router-dom";
+import { withRouter } from 'react-router-dom';
 import { signedOut } from '../../redux/actions';
 import { auth } from '../../firebase';
 
@@ -13,13 +13,13 @@ const Nav = ({ user, signedOut, history }) => {
 
   const handleScroll = () => {
     window.scrollY > 100 ? setShow(true) : setShow(false);
-  }
+  };
 
   const handleClick = () => {
-      auth.signOut();
-      signedOut();
-      history.push('/');
-  }
+    history.push('/');
+    auth.signOut();
+    signedOut();
+  };
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -38,12 +38,13 @@ const Nav = ({ user, signedOut, history }) => {
           onClick={() => setShowDropdown(!showDropdown)}
         />
       </div>
-      {
-          showDropdown &&
-      <div className="nav__dropdown">
-          <button className="signout" onClick={handleClick}>Sign out of Animeflix</button>
-      </div>
-      }
+      {showDropdown && (
+        <div className="nav__dropdown">
+          <button className="signout" onClick={handleClick}>
+            Sign out of Animeflix
+          </button>
+        </div>
+      )}
     </>
   );
 };
@@ -52,9 +53,8 @@ const mapStateToProps = ({ user }) => ({
   user,
 });
 
-
 const mapDispatchToProps = (dispatch) => ({
-    signedOut: () => dispatch(signedOut()),
-  });
+  signedOut: () => dispatch(signedOut()),
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Nav));

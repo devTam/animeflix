@@ -2,6 +2,7 @@ import { useEffect, lazy, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
+import ErrorBoundary from './components/error-boundary/ErrorBoundary';
 import Loader from './components/loader/Loader';
 import { auth } from './firebase';
 import { signedIn } from './redux/actions';
@@ -22,13 +23,15 @@ function App({ signedInUser, user }) {
   return (
     <div className="app">
       <Switch>
-        <Suspense fallback={<Loader />}>
-          <Route path="/home" component={Homepage} />
-          <Route
-            path="/"
-            render={() => (user ? <Redirect to="/home" /> : <Login />)}
-          />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<Loader />}>
+            <Route path="/home" component={Homepage} />
+            <Route
+              path="/"
+              render={() => (user ? <Redirect to="/home" /> : <Login />)}
+            />
+          </Suspense>
+        </ErrorBoundary>
       </Switch>
     </div>
   );
