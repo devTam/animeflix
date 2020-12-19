@@ -81,8 +81,9 @@ const Row = ({ title, url }) => {
                       src={movie.photo}
                       placeholder="../../assets/placeholder-min.png"
                     >
-                      {src => (
+                      {(src, loading) => (
                         <img
+                          style={{ opacity: loading ? 0.5 : 1 }}
                           src={src}
                           className="row__poster"
                           alt={movie.name}
