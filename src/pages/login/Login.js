@@ -10,7 +10,9 @@ const Login = () => {
   const signIn = () => {
     auth.signInWithPopup(provider).then(() => 
     {
-      sound.play()
+      setTimeout(() => {
+        sound.play()
+      }, 500); 
     })
 
   };
