@@ -8,7 +8,6 @@ import {
   Slide,
   ButtonBack,
   ButtonNext,
-  DotGroup,
 } from 'pure-react-carousel';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import mediaQuery from '../../utility/mediaQuery';
@@ -77,22 +76,21 @@ const Row = ({ title, url }) => {
                     className="row__poster-container"
                     onClick={() => setTrailer(movie?.youtube)}
                   >
-                    {
-                      movie?.photo &&
-                    (<ProgressiveImage
-                      src={movie.photo}
-                      placeholder="../../assets/placeholder-min.png"
-                    >
-                      {(src, loading) => (
-                        <img
-                          style={{ opacity: loading ? 0.5 : 1 }}
-                          src={src}
-                          className="row__poster"
-                          alt={movie.name}
-                        />
-                      )}
-                    </ProgressiveImage>)
-                    }
+                    {movie?.photo && (
+                      <ProgressiveImage
+                        src={movie.photo}
+                        placeholder="../../assets/placeholder-min.png"
+                      >
+                        {(src, loading) => (
+                          <img
+                            style={{ opacity: loading ? 0.5 : 1 }}
+                            src={src}
+                            className="row__poster"
+                            alt={movie.name}
+                          />
+                        )}
+                      </ProgressiveImage>
+                    )}
 
                     <div className="row__poster-name">{movie.name}</div>
                   </div>
@@ -110,12 +108,6 @@ const Row = ({ title, url }) => {
           >
             <i className="fas fa-chevron-right"></i>
           </ButtonNext>
-          {showBtn && (
-            <DotGroup
-              showAsSelectedForCurrentSlideOnly={true}
-              className="indicator"
-            />
-          )}
         </CarouselProvider>
       </div>
       {trailer && (
